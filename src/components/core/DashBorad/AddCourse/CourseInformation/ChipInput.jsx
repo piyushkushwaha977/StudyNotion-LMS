@@ -1,5 +1,5 @@
 // Importing React hook for managing component state
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 // Importing React icon component
 import { MdClose } from "react-icons/md"
 import { useSelector } from "react-redux"
@@ -19,6 +19,7 @@ export default function ChipInput({
 
   // Setting up state for managing chips array
   const [chips, setChips] = useState([])
+  const tagRef = useRef(null);
 
   useEffect(() => {
     if (editCourse) {
@@ -36,6 +37,7 @@ export default function ChipInput({
 
   // Function to handle user input when chips are added
   const handleKeyDown = (event) => {
+    console.log("clicked handlekeydown" , event.target.value)
     // Check if user presses "Enter" or ","
     if (event.key === "Enter" || event.key === ",") {
       // Prevent the default behavior of the event
@@ -52,17 +54,19 @@ export default function ChipInput({
       }
     }
   }
-  // const handleAddChip = (event) => {
-  //     const chipValue = event.target.value.trim()
-  //     // Check if the input value exists and is not already in the chips array
-  //     if (chipValue && !chips.includes(chipValue)) {
-  //       // Add the chip to the array and clear the input
-  //       const newChips = [...chips, chipValue]
-  //       setChips(newChips)
-  //       event.target.value = ""
-  //     }
-    
-  //   }
+ 
+    function handleAddChip(){
+      let tagValue = tagRef.current.value
+      console.log("tagref Value :: " , tagValue)
+      const chipValue = tagValue.trim()
+      // Check if the input value exists and is not already in the chips array
+      if (chipValue && !chips.includes(chipValue)) {
+        // Add the chip to the array and clear the input
+        const newChips = [...chips, chipValue]
+        setChips(newChips)
+        tagRef.current.value = null
+      }
+    }
   
 
   // Function to handle deletion of a chip
@@ -102,6 +106,7 @@ export default function ChipInput({
         {/* Render the input for adding new chips */}
       <div className=" w-full relative flex ">
         <input
+          ref={tagRef}
           id={name}
           name={name}
           type="text"
@@ -109,10 +114,10 @@ export default function ChipInput({
           onKeyDown={handleKeyDown}
           className="form-style w-full relative"
         />
-       {/* <button className=" absolute right-0 top-1.5 font-semibold  border border-yellow-300 rounded-lg px-2 md:px-4 py-1.5 bg-black opacity-90 text-yellow-50"
+       <button className=" absolute right-0 top-1.5 font-semibold  border border-yellow-300 rounded-lg px-2 md:px-4 py-1.5 mr-1 bg-black opacity-90 text-yellow-50"
          type="button"
-         onClick={handleAddChip}> Add
-      </button> */}
+         onClick={handleAddChip }> Add
+      </button>
       </div>
 
       </div>

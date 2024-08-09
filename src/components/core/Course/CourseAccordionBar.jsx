@@ -35,8 +35,8 @@ export default function CourseAccordionBar({ course, isActive, handleActive }) {
             </i>
             <p>{course?.sectionName}</p>
           </div>
-          <div className="space-x-4">
-            <span className="text-yellow-25">
+          <div className=" space-x-2 md:space-x-4 ">
+            <span className="text-yellow-25 whitespace-nowrap">
               {`${course.subSection.length || 0} lecture(s)`}
             </span>
           </div>

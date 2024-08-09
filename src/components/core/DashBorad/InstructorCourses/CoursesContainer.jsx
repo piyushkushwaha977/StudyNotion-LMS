@@ -19,7 +19,7 @@ import ConfirmationModal from "../../../common/ConfirmationModal"
 import PageLoader from "../../../common/PageLoader"
 import HighLightText from "../../HomPage/HighLightText"
 
-export default function CoursesTable({ courses, setCourses }) {
+export default function CoursesContainer({ courses, setCourses }) {
   // const dispatch = useDispatch()
   const navigate = useNavigate()
   const { token } = useSelector((state) => state.auth)
@@ -51,8 +51,8 @@ export default function CoursesTable({ courses, setCourses }) {
 
   return (
     <>
-      <div className="rounded-xl w-full border border-richblack-800 ">
-        <div className='w-full flex flex-wrap py-6'>
+      <div className="rounded-xl w-full  border border-richblack-800 ">
+        <div className='w-full flex flex-wrap py-2 pb-6'>
           {courses?.length === 0 ? (
             <section>
               <div className="py-10 text-center text-2xl font-medium text-richblack-100">
@@ -67,16 +67,16 @@ export default function CoursesTable({ courses, setCourses }) {
             courses?.map((course) => (
               <div
                 key={course._id}
-                className="flex flex-col w-[300px] mx-auto border rounded-lg  border-b border-richblack-800 my-3 py-6"
+                className="flex flex-col w-[300px] mx-auto border rounded-lg bg-[#0a0a0a]  border-b border-richblack-800 my-3 py-3 md:py-6"
               >
                 <div className="flex mx-auto">
                   <img
                     src={course?.thumbnail}
                     alt={course?.courseName}
-                    className="h-[150px] w-[250px] md:w-[220px] rounded-lg object-cover"
+                    className="h-[140px] w-[250px]  rounded-lg object-cover"
                   />
                 {/* Buttons of Edit and Delete */}
-                <div className="text-sm flex flex-col ml-2 gap-4 font-medium text-richblack-100 ">
+                <div className="text-sm flex flex-col  gap-4 font-medium text-richblack-100 ">
                   <button
                     disabled={loading}
                     onClick={() => {
@@ -113,7 +113,7 @@ export default function CoursesTable({ courses, setCourses }) {
               </div>
                 {/* Card Content */}
                 <>
-                <div className="flex flex-col px-7 gap-y-1  justify-between">
+                <div className="flex flex-col px-2 gap-y-1  justify-between">
                     <p className="text-lg font-semibold text-richblack-5">
                       {course.courseName}
                     </p>

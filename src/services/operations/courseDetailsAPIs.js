@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast"
 
-import { updateCompletedLectures } from "../../slices/viewCourseSlice"
-import { setLoading } from "../../slices/profileSlice";
+// import { updateCompletedLectures } from "../../slices/viewCourseSlice"
+// import { setLoading } from "../../slices/profileSlice";
 import { apiConnector } from "../apiConnector"
 import { courseEndpoints } from "../apis"
 
@@ -22,7 +22,7 @@ const {
   GET_FULL_COURSE_DETAILS_AUTHENTICATED,
   CREATE_RATING_API,
   LECTURE_COMPLETION_API,
-  GET_COURSE_PROGRESS_PERCENTAGE
+  // GET_COURSE_PROGRESS_PERCENTAGE
 } = courseEndpoints
 
 export const getAllCourses = async () => {

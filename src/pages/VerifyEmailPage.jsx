@@ -7,9 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { sendOtp,signUp } from "../services/operations/authAPIs";
 import { useNavigate } from "react-router-dom";
 import PageLoader from "../components/common/PageLoader";
+import toast from "react-hot-toast";
 
 const VerifyEmailPage =  () => {
   const [otp, setOtp] = useState("");
+  // console.log("OTP Value : " , otp)
+  // console.log("otpValue Length : " , otp.toString().length)
   const { signupData, loading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,6 +35,9 @@ const VerifyEmailPage =  () => {
       password,
       confirmPassword,
     } = signupData;
+     
+    // Checking the Value of OTP is 6 Digit or not 
+     if( otp.toString().length !== 6 ) return toast.error("OTP Value Should be 6 Digit")
 
     dispatch(
       signUp(

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"
-import ReactStars from "react-rating-stars-component"
+// import ReactStars from "react-rating-stars-component"
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
+
+import ReactStars from 'react-stars'
 
 // Import Swiper styles
 import "swiper/css"
@@ -49,7 +51,7 @@ function ReviewSlider() {
           loop={true}
           freeMode={true}
           autoplay={{
-            delay: 1500,
+            delay: 2500,
             disableOnInteraction: false,
           }}
           breakpoints={{
@@ -98,7 +100,7 @@ function ReviewSlider() {
                     </h3>
                     <ReactStars
                       count={5}
-                      value={review.rating}
+                      value={review?.rating}
                       size={20}
                       edit={false}
                       activeColor="#ffd700"

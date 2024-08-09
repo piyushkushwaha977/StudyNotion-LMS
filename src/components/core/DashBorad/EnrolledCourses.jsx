@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react"
 import ProgressBar from "@ramonak/react-progress-bar"
-import { BiDotsVerticalRounded } from "react-icons/bi"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { getUserEnrolledCourses } from "../../../services/operations/profileAPIs"
@@ -58,7 +57,7 @@ export default function EnrolledCourses() {
         <div className=" flex flex-wrap mx-auto my-8 py-6  text-richblack-5">
 
           {enrolledCourses.map((course, index) => (
-            <div className=" md:w-[18rem]   lg:w-[24rem] mx-auto border border-pure-greys-800 rounded-xl py-3 mb-4" >
+            <div key={course._id} className=" md:w-[18rem] lg:w-[24rem] mx-auto bg-[#0a0a0a] border border-pure-greys-800 rounded-xl py-3 mb-4" >
               <div
                 className="flex flex-col cursor-pointer items-center px-2  md:px-5"
                 onClick={() => {

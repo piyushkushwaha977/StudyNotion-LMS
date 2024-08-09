@@ -4,7 +4,9 @@ import { useNavigate, useParams } from "react-router-dom"
 
 import "video-react/dist/video-react.css"
 import { useLocation } from "react-router-dom"
-import { BigPlayButton, Player } from "video-react"
+
+// New React Player
+import ReactPlayer from 'react-player'
 
 import { markLectureAsComplete } from "../../../services/operations/courseDetailsAPIs"
 import { updateCompletedLectures } from "../../../slices/viewCourseSlice"
@@ -25,6 +27,7 @@ const VideoDetails = () => {
   const [previewSource, setPreviewSource] = useState("")
   const [videoEnded, setVideoEnded] = useState(false)
   const [loading, setLoading] = useState(false)
+
 
   useEffect(() => {
     ;(async () => {
@@ -171,7 +174,7 @@ const VideoDetails = () => {
   }
 
   return (
-    <div className="flex flex-col gap-5 text-white">
+    <div className=" w-full h-full relative flex flex-col gap-5 text-white">
       {!videoData ? (
         <img
           src={previewSource}
@@ -179,16 +182,23 @@ const VideoDetails = () => {
           className="h-full w-full rounded-md object-cover"
         />
       ) : (
-        <Player
+        <ReactPlayer
           ref={playerRef}
-          aspectRatio="16:9"
-          playsInline
+          className='relative w-full h-full left-0 top-0'
+          controls
+          playsinline
+          playing={true}
+          width="100%"
+          height="100%"
           onEnded={() => setVideoEnded(true)}
-          src={videoData?.videoUrl}
+          url={videoData?.videoUrl}
+          // playIcon={ <div className=" bg-pure-greys-400 rounded-full w-14" ><GoPlay className=" text-caribbeangreen-300"/></div>}
         >
-          <BigPlayButton position="center" />
-          {/* Render When Video Ends */}
-          {videoEnded && (
+        </ReactPlayer>
+      )}
+   
+          {/* Outside ReactVideoComponent Render When Video Ends */}
+                {videoEnded && (
             <div
               style={{
                 backgroundImage:
@@ -209,7 +219,7 @@ const VideoDetails = () => {
                 onclick={() => {
                   if (playerRef?.current) {
                     // set the current time of the video to 0
-                    playerRef?.current?.seek(0)
+                    playerRef?.current?.seekTo(0)
                     setVideoEnded(false)
                   }
                 }}
@@ -238,10 +248,7 @@ const VideoDetails = () => {
               </div>
             </div>
           )}
-        </Player>
-      )}
-
-      <h1 className="mt-4 pl-2 text-3xl font-semibold">{videoData?.title}</h1>
+      <h1 className="mt-4 pl-2 text-2xl md:text-3xl font-semibold">{videoData?.title}</h1>
       <p className=" pl-2 pb-6 lg:pb-0">{videoData?.description}</p>
     </div>
   )

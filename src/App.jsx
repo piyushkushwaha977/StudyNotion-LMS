@@ -13,8 +13,6 @@ import UpdatePasswordPage from "./pages/UpdatePasswordPage";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage";  
-import PageLoader from "./components/common/PageLoader";  
-import ConfirmationModal from "./components/common/ConfirmationModal";
 import Cart from "./components/core/DashBorad/Cart";
 import EnrolledCourses from "./components/core/DashBorad/EnrolledCourses";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";

@@ -36,7 +36,7 @@ export default function ViewCourse() {
 
   return (
     <>
-      <div className="relative bg-black flex flex-col-reverse  md:flex md:flex-row w-full h-full md:h-screen md:pt-14 py-36 md:py-0 ">
+      <div className="relative bg-black flex flex-col-reverse  md:flex md:flex-row w-full h-full md:h-screen md:pt-14 py-28 md:py-0 ">
         <VideoDetailsSidebar setReviewModal={setReviewModal} />
         <div className=" md:flex-1 overflow-auto">
           <div className=" mx-1 md:mx-6">

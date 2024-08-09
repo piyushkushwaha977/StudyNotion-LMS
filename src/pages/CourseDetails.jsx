@@ -156,7 +156,7 @@ function CourseDetails() {
   }
 
   return (
-    <div className=" bg-black pt-16">
+    <div className=" bg-[#040404] pt-16">
       <div className={`relative w-full `}>
         {/* Hero Section */}
         <div className="mx-auto box-content px-4 lg:w-[1260px] 2xl:relative ">
@@ -173,7 +173,7 @@ function CourseDetails() {
               className={`z-30 my-5 flex flex-col justify-center gap-4 py-5 text-lg text-richblack-5`}
             >
               <div>
-                <p className="text-4xl font-bold text-richblack-5 sm:text-[42px]">
+                <p className=" py-2 text-4xl font-bold bg-gradient-to-r from-[#6e58d2c3] to-[#923CB5] text-transparent bg-clip-text sm:text-[42px]">
                   {courseName}
                 </p>
               </div>

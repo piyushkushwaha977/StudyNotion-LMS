@@ -100,9 +100,9 @@ export default function Instructor() {
           <div className="rounded-md bg-[#0c0c0c] p-3 md:p-6">
             {/* Render 3 courses */}
             <div className="flex items-center justify-between">
-              <p className="text-lg font-bold text-richblack-5">Your Courses</p>
+              <p className="text-lg md:text-2xl font-bold text-richblack-5">Your Courses</p>
               <Link to="/dashboard/my-courses">
-                <p className="text-xs font-semibold text-yellow-50">View All</p>
+                <p className="text-xs md:text-xl font-semibold text-yellow-50 underline">View All Courses</p>
               </Link>
             </div>
             <div className="my-4 flex items-start space-x-2 md:space-x-6">
@@ -111,21 +111,21 @@ export default function Instructor() {
                   <img
                     src={course?.thumbnail}
                     alt={course?.courseName}
-                    className=" h-[80px] md:h-[201px] w-full rounded-md object-cover"
+                    className=" h-[80px] md:h-[130px] lg:h-[201px] w-full rounded-md object-cover"
                   />
                   <div className="mt-3 w-full">
-                    <p className="text-sm font-medium text-richblack-50">
+                    <p className=" text-xs md:text-sm lg:text-lg font-medium text-richblack-50">
                       {course?.courseName}
                     </p>
-                    <div className="mt-1 flex flex-col md:flex-row items-center space-x-2">
-                      <p className="text-xs font-medium text-richblack-300">
+                    <div className="mt-1 flex flex-col md:flex-row md:items-center md:space-x-2">
+                      <p className="text-[10px] md:text-xs lg:text-sm font-medium text-richblack-300">
                         ({course?.studendsEnrolled.length}) Students
                       </p>
-                      <p className="text-xs hidden md:block font-medium text-richblack-300">
+                      <p className=" md:text-xs lg:text-sm hidden md:block font-medium text-richblack-300">
                         |
                       </p>
-                      <p className="text-xs font-medium text-richblack-300">
-                        Rs. {course?.price}
+                      <p className=" text-[10px] md:text-xs lg:text-sm font-medium text-richblack-300">
+                      Price:  Rs. {course?.price}
                       </p>
                     </div>
                   </div>

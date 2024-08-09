@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import { useDropzone } from "react-dropzone"
 import { FiUploadCloud } from "react-icons/fi"
-import { useSelector } from "react-redux"
 
-import "video-react/dist/video-react.css"
-import { Player } from "video-react"
+import React from 'react'
+import ReactPlayer from 'react-player'
 
 export default function Upload({
   name,
@@ -16,7 +15,7 @@ export default function Upload({
   viewData = null,
   editData = null,
 }) {
-  const { course } = useSelector((state) => state.course)
+  // const { course } = useSelector((state) => state.course)
   const [selectedFile, setSelectedFile] = useState(null)
   const [previewSource, setPreviewSource] = useState(
     viewData ? viewData : editData ? editData : ""
@@ -58,17 +57,17 @@ export default function Upload({
   }, [selectedFile, setValue])
 
   return (
-    <div className=" w-full mx-auto flex flex-col space-y-2">
-      <label className="text-sm text-richblack-5" htmlFor={name}>
-        {label} {!viewData && <sup className="text-pink-200">*</sup>}
+    <div className=" w-full mx-auto flex flex-col space-y-2 ">
+      <label className=" flex justify-between text-sm text-richblack-5" htmlFor={name}>
+        <div>{label} {!viewData && <sup className="text-pink-200">*</sup>}</div>
       </label>
       <div
         className={`${
           isDragActive ? "bg-richblack-600" : "bg-richblack-700"
-        } flex min-h-[250px] cursor-pointer items-center justify-center rounded-md border-2 border-dotted border-richblack-500`}
+        } flex min-h-[240px] md:min-h-[300px] cursor-pointer items-center justify-center rounded-md border-2 border-dotted border-richblack-500`}
       >
         {previewSource ? (
-          <div className="flex w-full flex-col p-2 md:p-6">
+          <div className="flex w-full  flex-col p-2 md:p-6">
             {!video ? (
               <img
                 src={previewSource}
@@ -76,8 +75,8 @@ export default function Upload({
                 className=" md:h-[16rem] max-w-[18rem]  md:max-w-5xl rounded-md object-cover "
               />
             ) : (
-              <Player aspectRatio="16:9" playsInline src={previewSource} />
-            )}
+              <ReactPlayer height="100%" width="100%" playsinline controls={true} url={previewSource} />
+             )}
             {!viewData && (
               <button
                 type="button"
@@ -93,11 +92,18 @@ export default function Upload({
             )}
           </div>
         ) : (
-          <div
+        <div
+           {...getRootProps()}
             className="flex w-full flex-col items-center p-6"
-            {...getRootProps()}
-          >
-            <input {...getInputProps()} ref={inputRef} />
+            >
+        <input {...getInputProps()} ref={inputRef} />
+                  {/* File Size Description */}
+         <div className=" text-xs md:text-[14px] text-white pb-4 ">Video Size Should be less than 
+           <span className=" bg-black font-bold text-yellow-50  rounded-md py-0.5 pr-1 ml-1"> 8 MB </span>
+         </div>
+         <div className=" text-xs md:text-[14px] text-white pb-4 "> Thumbnail Size Should be less than 
+         <span className=" bg-black font-bold text-yellow-50  rounded-md py-0.5 pr-1 ml-1"> 200KB </span>
+         </div>
             <div className="grid aspect-square w-14 place-items-center rounded-full bg-pure-greys-800">
               <FiUploadCloud className="text-2xl text-yellow-50" />
             </div>
