@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect,  useState } from "react"
 import { useDropzone } from "react-dropzone"
 import { FiUploadCloud } from "react-icons/fi"
 
@@ -20,7 +20,7 @@ export default function Upload({
   const [previewSource, setPreviewSource] = useState(
     viewData ? viewData : editData ? editData : ""
   )
-  const inputRef = useRef(null)
+ 
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0]
@@ -33,7 +33,7 @@ export default function Upload({
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: !video
       ? { "image/*": [".jpeg", ".jpg", ".png"] }
-      : { "video/*": [".mp4"] },
+      : { "video/*": [".mp4",".mkv"] },
     onDrop,
   })
 
@@ -91,19 +91,20 @@ export default function Upload({
               </button>
             )}
           </div>
-        ) : (
-        <div
-           {...getRootProps()}
-            className="flex w-full flex-col items-center p-6"
-            >
-        <input {...getInputProps()} ref={inputRef} />
+           ) 
+           :
+           (
+            <div {...getRootProps()} className="flex w-full flex-col items-center p-6" >
+             <input {...getInputProps()} />
                   {/* File Size Description */}
-         <div className=" text-xs md:text-[14px] text-white pb-4 ">Video Size Should be less than 
-           <span className=" bg-black font-bold text-yellow-50  rounded-md py-0.5 pr-1 ml-1"> 8 MB </span>
-         </div>
+              <>
+              <div className=" text-xs md:text-[14px] text-white pb-4 ">Video Size Should be less than 
+                 <span className=" bg-black font-bold text-yellow-50  rounded-md py-0.5 pr-1 ml-1"> 8 MB </span>
+              </div>
          <div className=" text-xs md:text-[14px] text-white pb-4 "> Thumbnail Size Should be less than 
-         <span className=" bg-black font-bold text-yellow-50  rounded-md py-0.5 pr-1 ml-1"> 200KB </span>
+              <span className=" bg-black font-bold text-yellow-50  rounded-md py-0.5 pr-1 ml-1"> 200KB </span>
          </div>
+              </>
             <div className="grid aspect-square w-14 place-items-center rounded-full bg-pure-greys-800">
               <FiUploadCloud className="text-2xl text-yellow-50" />
             </div>

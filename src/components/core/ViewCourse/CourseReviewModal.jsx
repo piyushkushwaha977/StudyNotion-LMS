@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { RxCross2 } from "react-icons/rx"
-import ReactStars from "react-rating-stars-component"
+import ReactStars from 'react-stars'
 import { useSelector } from "react-redux"
 
 import { createRating } from "../../../services/operations/courseDetailsAPIs"
@@ -46,7 +46,7 @@ export default function CourseReviewModal({ setReviewModal }) {
     <div className="fixed inset-0 z-[1000] !mt-0 grid h-screen w-screen place-items-center overflow-auto bg-black bg-opacity-50 backdrop-blur-sm">
       <div className="my-10 w-11/12 max-w-[700px] rounded-lg border border-richblack-400 bg-[#000000]">
         {/* Modal Header */}
-        <div className="flex items-center justify-between rounded-t-lg bg-richblack-800 p-5">
+        <div className="flex items-center justify-between rounded-t-lg bg-richblack-900 p-5">
           <p className="text-xl font-semibold text-richblack-5">Add Review</p>
           <button onClick={() => setReviewModal(false)}>
             <RxCross2 className="text-2xl text-richblack-5" />
