@@ -10,6 +10,8 @@ import { categories } from "../services/apis"
 import { getCatalogPageData } from "../services/operations/pageAndComponentData"
 import PageLoader from "../components/common/PageLoader"
 import Error from "./Error"
+import { BiSolidCategoryAlt } from "react-icons/bi";
+import { RiCheckDoubleFill } from "react-icons/ri";
 
 function Catalog() {
   const { loading } = useSelector((state) => state.profile)
@@ -69,8 +71,9 @@ function Catalog() {
               {catalogPageData?.data?.selectedCategory?.name}
             </span>
           </p>
-          <p className="text-3xl text-richblack-5">
-            {catalogPageData?.data?.selectedCategory?.name}
+          <p className=" text-2xl font-semibold md:text-3xl text-richblack-5 flex items-center">
+            <BiSolidCategoryAlt className="inline mr-2 text-[#d51e1ee1]"/> 
+             {catalogPageData?.data?.selectedCategory?.name}
           </p>
           <p className="max-w-[870px] text-richblack-200">
             {catalogPageData?.data?.selectedCategory?.description}
@@ -79,8 +82,9 @@ function Catalog() {
       </div>
 
       {/* Section 1 */}
-      <div className=" md:mx-auto box-content max-w-full mx-2 md:px-4 md:py-12 lg:max-w-maxContent">
-        <div className="section_heading ml-3">Courses to get you started</div>
+      <div className=" md:mx-auto box-content max-w-full mx-2 md:px-4 md:py-6 lg:max-w-maxContent">
+        <div className="section_heading ml-3"> <RiCheckDoubleFill className="inline text-3xl md:text-[45px] mr-2"/>
+          Courses to get you started</div>
         <div className="my-4 flex border-b border-b-richblack-600 text-sm">
           <p
             className={`px-4 py-2 ${
@@ -111,7 +115,8 @@ function Catalog() {
       </div>
       {/* Section 2 */}
       <div className=" md:mx-auto box-content  max-w-full mx-2 md:px-4 py-12 lg:max-w-maxContent">
-        <div className="section_heading">
+        <div className=" text-xl text-white lg:text-4xl">
+        <RiCheckDoubleFill className="inline text-2xl md:text-[45px] mr-2"/>
           Top courses in {catalogPageData?.data?.differentCategory?.name}
         </div>
         <div className="py-8">
@@ -123,7 +128,7 @@ function Catalog() {
 
       {/* Section 3 */}
       <div className=" md:mx-auto box-content  max-w-full mx-2 md:px-4 py-12 lg:max-w-maxContent">
-        <div className="section_heading">Frequently Bought</div>
+        <div className="section_heading"> <RiCheckDoubleFill className="inline text-3xl md:text-[45px]"/> Frequently Bought</div>
         <div className="py-8">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {catalogPageData?.data?.mostSellingCourses

@@ -54,7 +54,7 @@ export default function EnrolledCourses() {
            <h1 className=" mt-4 font-bold text-3xl md:text-5xl text-blue-400 text-center underline ">Check New Courses</h1>
         </p>
       ) : (
-        <div className=" flex flex-wrap mx-auto my-8 py-6  text-richblack-5">
+        <div className=" flex flex-wrap mx-auto my-4 md:my-8 py-6  text-richblack-5">
 
           {enrolledCourses.map((course, index) => (
             <div key={course._id} className=" md:w-[18rem] lg:w-[24rem] mx-auto bg-[#0a0a0a] border border-pure-greys-800 rounded-xl py-3 mb-4" >
@@ -82,7 +82,7 @@ export default function EnrolledCourses() {
                       ? `${course.courseDescription.slice(0, 70)}...`
                       : course.courseDescription}
                   </p>
-               <div className="flex flex-col gap-2 px-2 py-3 border-t border-pure-greys-400 pt-2">
+               <div className="flex flex-col gap-2 py-3 border-t border-pure-greys-400 pt-2">
                 <p>Progress: {course.progressPercentage || 0}%</p>
                 <ProgressBar
                   completed={course.progressPercentage  || 0}
