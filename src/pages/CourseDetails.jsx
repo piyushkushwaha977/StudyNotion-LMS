@@ -169,7 +169,7 @@ function CourseDetails() {
               />
             </div>
             <div
-              className={`z-30 my-5 flex flex-col justify-center gap-4 py-5 text-lg text-richblack-5`}
+              className={`z-30 my-5 flex flex-col justify-center gap-4 py-5 text-lg text-richblack-100`}
             >
               <div>
                 <p className=" py-2 text-4xl font-bold bg-gradient-to-r from-[#6e58d2c3] to-[#923CB5] text-transparent bg-clip-text sm:text-[42px]">
@@ -181,7 +181,7 @@ function CourseDetails() {
                 <span className="text-yellow-25">{avgReviewCount}</span>
                 <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
                 <span>({ratingAndReviews?.length ? ratingAndReviews?.length : 0}) Reviews</span>
-                <span>({ studendsEnrolled?.length ? studendsEnrolled?.length : 0 }) StudentsEnrolled</span>
+                <span>({ studendsEnrolled?.length ? studendsEnrolled?.length : 0 }) Enrolled-Students</span>
               </div>
               <div>
                 <p className="">
@@ -260,11 +260,11 @@ function CourseDetails() {
                   <span>
                     {totalNoOfLectures} {`lecture(s)`} ||
                   </span>
-                  <span className=" text-yellow-100"> Duration {response?.totalDuration} </span>
+                  <span className=" text-caribbeangreen-100 font-semibold"> Duration {response?.totalDuration} </span>
                 </div>
                 <div>
                   <button
-                    className="text-yellow-25"
+                    className="text-yellow-25 border border-yellow-500 rounded-lg px-3 py-1"
                     onClick={() => setIsActive([])}
                   >
                     Collapse all sections

@@ -38,6 +38,8 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [courseSectionData, courseEntireData, location.pathname])
 
+
+
   return (
     <>
       <div className=" px-2 md:px-0 flex w-full md:w-[320px] md:max-w-[350px] flex-col md:border-r-[1px] border-r-richblack-700 bg-black">
@@ -47,10 +49,13 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
               onClick={() => {
                 navigate(`/dashboard/enrolled-courses`)
               }}
-              className="flex h-[35px]  items-center justify-center rounded-lg bg-richblack-100 p-1 text-richblack-900 hover:scale-90"
+              className="flex  items-center justify-center rounded-lg bg-richblack-100  text-richblack-900  py-1 md:py-2 px-2 md:px-3 hover:scale-105 transition-all hover:duration-500 cursor-pointer"
               title="back"
             >
-              <IoIosArrowBack size={30}  /> <div className=" text-black pr-3 text-xl">Back</div>
+               <div className=" text-black flex items-center text-xl pr-2 font-normal"> 
+                  <IoIosArrowBack size={26}  />
+                  Back
+                </div>
             </div>
             <IconBtn
               text="Add Review"
@@ -74,8 +79,8 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
               key={index}
             >
               {/* Section */}
-              <div className="flex flex-row justify-between bg-richblack-600 px-5 py-4">
-                <div className="w-[70%] font-semibold">
+              <div className="flex flex-row justify-between bg-pure-greys-800 rounded-xl  px-5 py-4 group ">
+                <div className="w-[70%] font-semibold transition-all duration-500 group-hover:pl-2">
                   {course?.sectionName}
                 </div>
                 <div className="flex items-center gap-3">
@@ -87,7 +92,7 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
                       activeStatus === course?.sectionName
                         ? "rotate-0"
                         : "rotate-180"
-                    } transition-all duration-500`}
+                    } transition-all duration-500 `}
                   >
                     <BsChevronDown />
                   </span>
@@ -96,13 +101,13 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
 
               {/* Sub Sections */}
               {activeStatus === course?._id && (
-                <div className="transition-[height] duration-500 ease-in-out">
+                <div className="transition-[height] duration-[0.35s] ease-[ease] group">
                   {course.subSection.map((topic, i) => (
                     <div
-                      className={`flex gap-3  px-5 py-2 ${
+                      className={`  flex gap-3  px-5 py-2 rounded-lg  ${
                         videoBarActive === topic._id
                           ? "bg-yellow-200 font-semibold text-richblack-800"
-                          : "hover:bg-richblack-900"
+                          : "hover:bg-pure-greys-600 transition-all duration-500"
                       } `}
                       key={i}
                       onClick={() => {

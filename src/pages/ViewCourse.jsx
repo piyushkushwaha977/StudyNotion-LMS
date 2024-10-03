@@ -11,14 +11,17 @@ import {
   setEntireCourseData,
   setTotalNoOfLectures,
 } from "../slices/viewCourseSlice"
+import PageLoader from "../components/common/PageLoader"
 
 export default function ViewCourse() {
   const { courseId } = useParams()
   const { token } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
   const [reviewModal, setReviewModal] = useState(false)
-
+  const [loading, setLoading] = useState(false)
+ 
   useEffect(() => {
+    setLoading(true)
     ;(async () => {
       const courseData = await getFullDetailsOfCourse(courseId, token)
       // console.log("Course Data here... ", courseData.courseDetails)
@@ -30,9 +33,19 @@ export default function ViewCourse() {
         lectures += sec.subSection.length
       })
       dispatch(setTotalNoOfLectures(lectures))
+      setLoading(false)
     })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  if (loading) {
+    // console.log("payment loading")
+    return (
+      <div className="grid h-screen w-full place-items-center bg-black">
+        <PageLoader/>
+      </div>
+    )
+  }
 
   return (
     <>

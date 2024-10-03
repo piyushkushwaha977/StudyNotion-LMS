@@ -8,11 +8,11 @@ export const NavbarLinks = [
     path: '/courses',
   },
   {
-    title: "About Us",
+    title: "About us",
     path: "/about-us",
   },
   {
-    title: "Contact Us",
+    title: "Contact us",
     path: "/contact-us",
   },
 ];

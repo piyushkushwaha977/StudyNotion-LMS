@@ -15,7 +15,7 @@ const ContactUsPage = () => {
         </div>
 
         {/* Contact Form */}
-        <div className="lg:w-[50%] md:mt-20 bg-[#121212]">
+        <div className="lg:w-[50%] md:mt-20 bg-[#121212] opacity-70">
           <ContactForm />
         </div>
       </div>

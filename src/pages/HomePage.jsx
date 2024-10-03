@@ -15,39 +15,51 @@ import ReviewSlider from '../components/common/ReviewSlider';
 
 
 const HomePage = () => {
+
   return (
-  
-<div className='left-0 top-0  -z-10  w-full'>
+
+ <div className='left-0 top-0  -z-10  w-full'>
   {/* GRADIENT -  */}
    <div className="relative w-full bg-black"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div><div className=" fixed left-0 right-0 top-[-10%] h-[1000px] w-[1000px] rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]"></div>
 
     <div className='relative h-full'>
        {/* SECTION 1 */}
        <div className="mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 text-white">
+        
         {/* Become a Instructor Button */}
-        <Link to={"/signup"}
-        >
-        <div className="flex items-center mt-36 gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800
-         to-black px-4 py-2 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:text-gray-500 hover:border-gray-800 hover:from-black hover:to-gray-900">
-          Become an Instructor 
-          <FaArrowRight className=''/>
-        </div>
+        <Link to={"/courses-category/web-development"}>
+            <div className=" mt-36 w-fit mx-auto flex items-center  gap-3 cursor-pointer text-pure-greys-100 font-semibold bg-gradient-to-t from-pure-greys-800
+              to-black px-4 py-2 rounded-full border border-pure-greys-600 hover:text-pure-greys-400 transition-all duration-200 ">
+                <span className='' >
+                Explore New Courses</span>
+                 <FaArrowRight className=' text-sm text-pure-greys-400 '/>
+            </div>  
         </Link>
 
 
         {/* Heading */}
         <div className="text-center text-3xl md:text-4xl font-semibold">
-          <span className=' text-3xl md:text-4xl bg-gradient-to-r  from-[#C797EB] to-[#F0ECFC] text-transparent bg-clip-text'>Empower Your Future with</span>
+          <span className=' text-3xl md:text-5xl bg-gradient-to-r from-richblack-200 to-pure-greys-400  text-transparent bg-clip-text'
+          >Empower Your Future with</span>
           <HighLightText text={"Coding Skills"} />
         </div>
         
         {/* Sub Heading */}
-        <div className="-mt-3 w-[90%] font-poppins text-center text-[16px] md:text-lg font-bold text-richblack-200">
+        <div className="-mt-3 w-[90%] font-poppins text-center text-[14px] md:text-lg font-bold text-richblack-200">
           With our online coding courses, you can learn at your own pace, from
           anywhere in the world, and get access to a wealth of resources,
           including hands-on projects, quizzes, and personalized feedback from
           instructors.
         </div>
+
+      {/* EXPLORE COURSES BUTTON FOR MOBILE */}
+        <Link to={"/signup"}>
+            <div className=" -m-4 w-fit mx-auto flex items-center  gap-3 cursor-pointer text-pure-greys-200 hover:text-pure-greys-400 font-semibold bg-black backdrop:blur-xl px-4 py-2 rounded-lg transition-all duration-200 ">
+                <span >
+                   Become an Instructor</span>
+                 <FaArrowRight className=' text-sm text-pure-greys-400 '/>
+            </div>  
+        </Link>
 
         {/* CTA Buttons */}
         <div className=" mt-4 md:mt-8 flex flex-row gap-7">

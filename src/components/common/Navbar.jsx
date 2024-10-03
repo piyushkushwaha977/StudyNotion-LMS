@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import Logo from './Logo'
 import { Link, matchPath, useNavigate } from 'react-router-dom'
@@ -22,6 +23,7 @@ import { IoLogOut } from "react-icons/io5";
 import { FaCheckDouble } from "react-icons/fa6";
 import { BiSolidLogInCircle } from "react-icons/bi";
 import { FaAngleDown } from "react-icons/fa6";
+import { RiExternalLinkFill } from "react-icons/ri";
 
 const Navbar = () => {
 
@@ -154,7 +156,7 @@ const Navbar = () => {
           )}
 
           {token === null && (
-            <Link to="/login">
+            <Link to="/login" >
               <button className="rounded-[8px] border border-richblack-400 bg-richblack-900 px-[12px] py-[8px] text-richblack-100 hover:text-yellow-200 font-bold">
                 Log in
               </button>
@@ -174,7 +176,7 @@ const Navbar = () => {
     </div>
 
          {/* MOBILE RESPONSIVE NAVBAR  */}
-      <div className=' md:hidden top-0 h-14 flex justify-between items-center '>
+    <div className=' md:hidden top-0 h-14 flex justify-between items-center '>
 
           {/* LOGO -ADDED */}
         <Link to="/" className=' ml-2'>
@@ -182,6 +184,7 @@ const Navbar = () => {
            > Study<span className=' text-[22px]'>Notion</span> </div>
         </Link> 
 
+          {/* DASHBOARD BUTTON  -ADDED */}
         <div className=' flex gap-x-5'>
           { token && (
            <Link to={"/dashboard/my-profile"}>
@@ -211,11 +214,15 @@ const Navbar = () => {
 
       {
         isMenuOpen && 
-         (<div className=' h-screen md:hidden fixed inset-0 overflow-auto z-[200] translate-x-0   '>
+         (<motion.div 
+           initial={{opacity: 0 , x: 100}}
+           animate={{opacity:1 , x: 0}}
+           transition={{duration: 0.6}}          
+          className=' h-screen md:hidden fixed inset-0 overflow-auto z-[200] translate-x-0   '>
         
            <div className=' flex  min-h-full'>
            {/* Left Section of Navbar */}
-            <div className=' w-1/4  bg-black opacity-80 backdrop-blur-sm  '>
+            <div className=' w-1/4  bg-pure-greys-800  opacity-60 backdrop-blur-sm  '>
               <div className="mt-12 ml-auto mr-5 h-14 aspect-square rounded-full bg-richblack-400 grid place-items-center text-lg cursor-pointer removeBlueBoxColor">
                <button
                  onClick={handleMenu}
@@ -254,18 +261,19 @@ const Navbar = () => {
                   )
                 }
                </div>)}
-
+              
+              {/* LOGIN / SIGNUP BUTTON FOR MOBILE */}
                {
                 !token && (
                   <div className=' flex flex-col gap-y-4 p-5'>
-                   <Link to={"/login"}>
+                   <Link to={"/login"} onClick={() => setIsMenuOpen(false)} >
                     <div className=' text-pure-greys-200 text-xl gap-x-2  flex items-center  '> 
                       <FaCheckDouble className=' inline  text-2xl'/>
                       Login 
                      </div>
                    </Link>
                     
-                   <Link to={'/signup'}>
+                   <Link to={'/signup'} onClick={() => setIsMenuOpen(false)}>
                     <div className=' text-pure-greys-200 text-xl flex gap-x-2 items-center  '> 
                       <BiSolidLogInCircle className=' inline text-2xl'/>
                       SignUp
@@ -275,43 +283,44 @@ const Navbar = () => {
                 )
               }
               </div>
- 
-             {/* Common Routes */}
-              <div className=' mx-6'>
-                <div className=' flex flex-col gap-y-5 p-5 '>
-                   <Link to={"/"}>
+
+             <div className=' mx-14 flex flex-col gap-3 pt-4'>
+                  <Link to={"/"} onClick={() => setIsMenuOpen(false)}>
                     <div className=' text-pure-greys-200 text-xl gap-x-2  flex items-center  '> 
                       <IoHome className=' inline  text-2xl'/>
                       Home
                      </div>
                    </Link>
                     
-                   <Link to={'/about-us'}>
+                   <Link to={'/about-us'} onClick={() => setIsMenuOpen(false)}>
                     <div className=' text-pure-greys-200 text-xl flex gap-x-2 items-center  '> 
                       <RiInformation2Fill className=' inline text-2xl'/>
                       About Us
                      </div>
                    </Link>
 
-                   <Link to={'/contact-us'}>
+                   <Link to={'/contact-us'} onClick={() => setIsMenuOpen(false)}>
                     <div className=' text-pure-greys-200 text-xl flex gap-x-2 items-center border-b border-pure-greys-500 pb-3 '> 
                       <MdCall className=' inline text-2xl'/>
                       Contact Us
                      </div>
-                   </Link>
-                 
-
-                 <div className='' >
+                   </Link>             
+             </div> 
+ 
+             {/* Common Routes */}
+              <div className=''>
+                <div className=' flex flex-col gap-y-5 p-5 '>
+                 <>
                   <details open >
-                     <summary className='text-pure-greys-200 text-xl flex gap-x-2 items-center '>
+                     <summary className=' pl-6 text-yellow-200 text-xl flex gap-x-2 items-center '>
                       <BiSolidCategoryAlt className=' inline text-2xl'/>
-                      New  Courses
-                      <FaAngleDown className=' ml-2 inline text-3xl'/>
+                        <span className='border-b border-r-pure-greys-500'> New Courses</span>
+                      <FaAngleDown className=' ml-2 inline text-2xl'/>
                      </summary>
 
                      <div className=' ml-2 mt-2'>
                        {
-                        coursesLink.length ? (
+                        coursesLink.length > 0 ? (
                           <>
                             {
                               coursesLink
@@ -321,12 +330,13 @@ const Navbar = () => {
                                     .split(" ")
                                     .join("-")
                                     .toLowerCase()}`}
-                                  className="rounded-lg bg-transparent  hover:bg-richblack-400"
+                                  className="rounded-lg bg-transparent  hover:bg-richblack-400 "
                                   key={i}
+                                  onClick={() => setIsMenuOpen(false)}
                                 >
-                                  <div 
-                                  className='py-1  font-bold bg-gradient-to-r from-[#898795] to-[#9d97e4] text-transparent bg-clip-text'> 
-                                  {/* <span><BiSolidCategoryAlt className='inline text-xl text-black '/></span> */}
+                                <div 
+                                  className='py-1 font-bold text-lg bg-gradient-to-r text-pure-greys-300 underline flex gap-1'> 
+                                  <span><RiExternalLinkFill className='inline text-xl text-caribbeangreen-200 mb-1 '/></span>
                                   {"  "}
                                   {subLink.name}
                                   </div>
@@ -334,12 +344,12 @@ const Navbar = () => {
                               ))}
                           </>
                         ) : (
-                          <p className="text-center">No Courses Found</p>
+                          <p className="text-center"> Courses Not Found</p>
                         )
                        }
                      </div>
                   </details>
-                 </div>
+                 </>
 
                </div>
 
@@ -352,7 +362,7 @@ const Navbar = () => {
 
 
 
-         </div>
+         </motion.div>
         )}
 
  
