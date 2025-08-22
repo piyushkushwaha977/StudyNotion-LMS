@@ -54,7 +54,8 @@ const HomePage = () => {
 
       {/* EXPLORE COURSES BUTTON FOR MOBILE */}
         <Link to={"/signup"}>
-            <div className=" -m-4 w-fit mx-auto flex items-center  gap-3 cursor-pointer text-pure-greys-200 hover:text-pure-greys-400 font-semibold bg-black backdrop:blur-xl px-4 py-2 rounded-lg transition-all duration-200 ">
+            <div className=" -m-4 w-fit mx-auto flex items-center  gap-3 cursor-pointer text-pure-greys-200 hover:text-pure-greys-400 font-semibold bg-black backdrop:blur-xl
+             px-4 py-2 rounded-lg transition-all duration-200 border border-y-yellow-800">
                 <span >
                    Become an Instructor</span>
                  <FaArrowRight className=' text-sm text-pure-greys-400 '/>
@@ -214,11 +215,6 @@ const HomePage = () => {
 
       {/* Footer */}
       <Footer />
-
-
-
-
-
 
         </div>
 

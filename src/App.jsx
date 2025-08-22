@@ -69,7 +69,7 @@ function App() {
           }
         />
         <Route
-          path="forgot-password"
+          path="forgot-password/:id"
           element={
             <OpenRoute>
               <ForgotPasswordPage />

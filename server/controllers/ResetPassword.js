@@ -2,6 +2,7 @@ const User = require("../models/User");
 const mailSender = require("../utils/mailSender")
 const bcrypt = require("bcrypt");
 const crypto = require("crypto")
+require("dotenv").config();
 
 // RESET PASSWORD TOKEN ;
 exports.resetPasswordToken = async( req, res) => {
@@ -30,12 +31,13 @@ try {
                                             );
         // console.log("DETAILS", updatedDetails);
     
-        const url = `https://study-notion-full-stack-lovat.vercel.app/forgot-password/${token}`  ;
+        
+        const URL = `${process.env.UPDATE_PASSWORD_URL}/${token}  `
         
         await mailSender(
                email,
                "LINK FOR RESET YOUR OLD-PASSWORD",
-               `LINK TO RESET YOUR STUDY-NOTION PASSWORD = ${url}`
+               `LINK TO RESET YOUR STUDY-NOTION NEW -- PASSWORD = ${URL}`
         );
     
         return res.status(200).json({

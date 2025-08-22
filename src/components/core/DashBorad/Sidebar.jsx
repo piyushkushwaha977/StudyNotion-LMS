@@ -69,7 +69,7 @@ export default function Sidebar() {
             }
             className="lg:w-full relative py-2  md:mr-14 text-sm font-medium text-richblack-300 flex justify-center items-center"
           >
-            <div className=" flex gap-x-2  place-items-center lg:mx-auto lg:pr-[100px] ">
+            <div className=" flex gap-x-2  place-items-center lg:mx-auto lg:pr-[105px] ">
               <IoLogOut className="ml-1 md:ml-0 text-[22px] md:text-[28px]  text-[#cf0c36]  " />
               <span className=" hidden md:block font-bold lg:text-[18px] font-edu-sa">Logout</span>
             </div>

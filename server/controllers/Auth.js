@@ -194,7 +194,9 @@ exports.login = async( req , res) => {
         })
       }
       // Check if User EXIST 
-      const user = await User.findOne({email});
+      const user = await User.findOne({email})
+                                 .populate("additionalDetails")
+                                 .exec();
       // console.log("user form login controller - " , user)
 
       if( !user) {
@@ -212,7 +214,7 @@ exports.login = async( req , res) => {
         };
         // Creationg Jwt by using Sign()
         const token =  jwt.sign( payLoad , process.env.JWT_SECRET , {
-            expiresIn:"24h",
+            expiresIn:"30d",
         })
         // user = user.toObject()
         user.token = token;

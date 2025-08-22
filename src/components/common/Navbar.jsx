@@ -215,9 +215,9 @@ const Navbar = () => {
       {
         isMenuOpen && 
          (<motion.div 
-           initial={{opacity: 0 , x: 100}}
+           initial={{opacity: 1 , x: 100}}
            animate={{opacity:1 , x: 0}}
-           transition={{duration: 0.6}}          
+           transition={{duration: 0.3}}          
           className=' h-screen md:hidden fixed inset-0 overflow-auto z-[200] translate-x-0   '>
         
            <div className=' flex  min-h-full'>

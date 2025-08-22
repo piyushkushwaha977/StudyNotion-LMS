@@ -51,7 +51,7 @@ export const signUp = (
   confirmPassword,
   otp,
   navigate) => {
-
+//  console.log("signup data opt value :: " , otp)
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
